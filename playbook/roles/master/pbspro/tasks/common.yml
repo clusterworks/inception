@@ -43,3 +43,7 @@
     name: pbs
     enabled: yes
     state: started
+
+- name: PBS - wait for the server to start up
+  pause:
+    minutes: 1
