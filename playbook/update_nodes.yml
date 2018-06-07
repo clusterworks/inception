@@ -1,6 +1,6 @@
 ---
 
-- hosts: master
+- hosts: nodes
   vars_files:
     - ../config.yml
   roles:
