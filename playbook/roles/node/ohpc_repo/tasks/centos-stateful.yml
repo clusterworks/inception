@@ -1,0 +1,12 @@
+---
+
+- name: Stateful Repos - install yum-config-manager
+  yum:
+    name: yum-config-manager
+    state: present
+
+- name: OpenHPC - add repo mirror hosted on SMS
+  shell: "yum-config-manager --add-repo=http://{{sms_ip}}/{{ohpc_repo_dir}}/OpenHPC.local.repo
+
+- name: OpenHPC - replace local path with SMS URL
+  shell: perl -pi -e 's/file:\/\/\@PATH\@/http:\/\/{{sms_ip}}"{{ohpc_repo_dir}}//\//"\/"}"/s' /etc/yum.repos.d/OpenHPC.local.repo
