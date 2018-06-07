@@ -10,6 +10,10 @@ resource_manager: pbspro
 # When using xcat, can be stateless or stateful
 xcat_mode: stateful
 
+# Choose whether the headnode will accept jobs
+sms_accept_jobs: no
+
+# The root password to be set on each node
 node_root_password: changme
 
 # Private network settings
@@ -38,4 +42,3 @@ infiniband: no
 ipoib: no
 sms_ipoib:
 ipoib_netmask:
-
