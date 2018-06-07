@@ -18,7 +18,7 @@
     gpgcheck: yes
     gpgkey: http://xcat.org/files/xcat/repos/yum/xcat-dep/rh7/x86_64/repodata/repomd.xml.key
 
-- name: xCAT - install via Yum
+- name: xCAT - install via Yum (this may take several minutes)
   yum:
     name: xCAT
     state: present
