@@ -5,7 +5,7 @@ sms_eth_internal:
 
 # Set the middleware used for deployment
 deploy: xCAT
-resource_manager: pbspro
+resource_manager: pbs
 
 # When using xcat, can be stateless or stateful
 xcat_mode: stateful

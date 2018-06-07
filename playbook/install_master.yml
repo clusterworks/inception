@@ -6,4 +6,4 @@
     - common/firewall
     - master/ohpc_repo
     - master/xcat_base
-    - master/pbspro
+    - master/pbs

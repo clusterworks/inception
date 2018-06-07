@@ -4,4 +4,4 @@
   vars_files:
     - ../config.yml
   roles:
-    - master/xcat_add_nodes
+    - master/xcat_mkdef
