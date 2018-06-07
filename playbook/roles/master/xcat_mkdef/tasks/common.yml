@@ -42,18 +42,3 @@
 - name: xCAT - associate CentOS 7 stateless provisioning image
   shell: "nodeset compute osimage=centos7.4-x86_64-netboot-compute"
   when: xcat_mode == 'stateless'
-
-- name: xCAT - Next step for stateful installation
-  debug:
-    msg: |
-      *** Please set next boot mode to PXE on each node. If you configured the BMC, use the command `rsetboot compute net`.
-      *** Please (re)boot nodes to begin installation. If you configured the BMC, use the command `rpower compute reset`.
-      *** Once node installations are complete, run the update-nodes playbook.
-  when: xcat_mode == 'stateful'
-
-- name: xCAT - Next step for stateless installation
-  debug:
-    msg: |
-      *** If this is the first time installing the cluster, please run the update-nodes playbook to perform image customisation before booting stateless nodes.
-      *** If new nodes have been added to an existing cluster, please boot via PXE now. No further configuration is necessary.
-  when: xcat_mode == 'stateless'
