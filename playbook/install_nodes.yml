@@ -5,3 +5,4 @@
     - ../config.yml
   roles:
     - master/xcat_mkdef
+    - master/pbs_create
