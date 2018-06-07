@@ -1,6 +1,6 @@
 ---
 - hosts: master
-   vars_files:
+  vars_files:
     - ../config.yml
   roles:
     - common/firewall
