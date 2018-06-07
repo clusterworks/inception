@@ -1,0 +1,38 @@
+---
+
+- name: xCAT - core repository via Yum
+  yum_repository:
+    name: xCAT-core
+    baseurl: http://xcat.org/files/xcat/repos/yum/latest/xcat-core
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: http://xcat.org/files/xcat/repos/yum/latest/xcat-core/repodata/repomd.xml.key
+
+- name: xCAT - dependencies for RH 7 x86_64
+  yum_repository:
+    name: xCAT-dep
+    baseurl: http://xcat.org/files/xcat/repos/yum/xcat-dep/rh7/x86_64
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: http://xcat.org/files/xcat/repos/yum/xcat-dep/rh7/x86_64/repodata/repomd.xml.key
+
+- name: xCAT - install via Yum
+  yum:
+    name: xCAT
+    state: present
+
+- name: Register internal provisioning interface with xCAT for DHCP
+  command: 'chdef -t site dhcpinterfaces="xcatmn|{{sms_eth_internal}}"'
+
+- name: xCAT - copy node OS install media
+  copy:
+    src: "{{iso_path}}"
+    dest: "/tmp/node.iso"
+
+- name: xCAT - import node OS install media
+  command: 'copycds /tmp/node.iso/'
+
+- name: xCAT - clean up node OS install media
+  file:
+    path: "/tmp/node.iso"
+    state: absent

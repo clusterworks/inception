@@ -1,0 +1,8 @@
+---
+- hosts: master
+   vars_files:
+    - ../config.yml
+  roles:
+    - common/firewall
+    - master/ohpc_local
+    - master/xcat_base

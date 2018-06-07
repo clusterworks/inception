@@ -1,0 +1,7 @@
+---
+
+- hosts: master
+  vars_files:
+    - ../config.yml
+  roles:
+    - master/xcat_add_nodes

@@ -1,0 +1,59 @@
+---
+
+- name: xCAT - get list of nodes to check
+  set_fact:
+    nodes_to_check: "{{group['nodes']}}"
+
+- name: xCAT - check if nodes are defined
+  shell: "lsdef {{hostvars[item]['name']}}"
+  register: r
+  changed_when: r.rc == 1
+  failed_when: rc.rc > 1
+  with_items: "{{nodes_to_check}}"
+
+- name: xCAT - define nodes in the database
+  shell: "mkdef -t node {{hostvars[item.item]['name']}} groups=compute,all ip={{item.item}} mac={{hostvars[item.item]['mac'] netboot=xnba arch=x86_64 bmc={{hostvars[item.item]['bmc']}} bmcusername={{bmc_username}} bmcpassword={{bmc_password}} mgt=ipmi serialport=0 serialspeed=115200" 
+  with_items: "{{r.results}}
+  when: item.changed
+
+- name: xCAT - enable secondary NIC configuration
+  shell: "chdef compute -p postbootscripts=confignics"
+  when: ipoib == 'yes'
+
+- name: xCAT - register IPoIB IPs for each node
+  shell: "chdef {{hostvars[item.item]['name']}} nicips.ib0={{hostvars[item.item]['ib0']}} nictypes.ib0=Infiniband nicnetworks.ib0=ib0"
+  with_items: "{{r.results}}"
+  when:
+    - item.changed
+    - ipoib == 'yes'
+
+- name: xCAT - complete network service configuration
+  shell: "{{item}}"
+  with_items:
+    - "makehosts"
+    - "makenetworks"
+    - "makedhcp -n"
+    - "makedns -n"
+
+- name: xCAT - associate CentOS 7 stateful provisioning image
+  shell: "nodeset compute osimage=centos7.4-x86_64-install-compute"
+  when: xcat_mode == 'stateful'
+
+- name: xCAT - associate CentOS 7 stateless provisioning image
+  shell: "nodeset compute osimage=centos7.4-x86_64-netboot-compute"
+  when: xcat_mode == 'stateless'
+
+- name: xCAT - Next step for stateful installation
+  debug:
+    msg: |
+      *** Please set next boot mode to PXE on each node. If you configured the BMC, use the command `rsetboot compute net`.
+      *** Please (re)boot nodes to begin installation. If you configured the BMC, use the command `rpower compute reset`.
+      *** Once node installations are complete, run the update-nodes playbook.
+  when: xcat_mode == 'stateful'
+
+- name: xCAT - Next step for stateless installation
+  debug:
+    msg: |
+      *** If this is the first time installing the cluster, please run the update-nodes playbook to perform image customisation before booting stateless nodes.
+      *** If new nodes have been added to an existing cluster, please boot via PXE now. No further configuration is necessary.
+  when: xcat_mode == 'stateless'

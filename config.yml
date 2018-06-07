@@ -1,0 +1,41 @@
+# Set master/headnode network identification
+sms_name: headnode
+sms_ip:
+sms_eth_internal:
+
+# Set the middleware used for deployment
+deploy: xCAT
+resource_manager: pbspro
+
+# When using xcat, can be stateless or stateful
+xcat_mode: stateful
+
+node_root_password: changme
+
+# Private network settings
+domain_name: local
+internal_netmask:
+ntp_server:
+
+# BMC login (optional)
+bmc_username:
+bmc_password:
+
+# Repository settings
+iso_path:
+ohpc_repo_dir:
+epel_repo_dir:
+
+# Extras
+# Which extras to enable, e.g. ['lustre', 'nagios', 'ganglia']
+enable_extras: []
+sysmgmtd_host:
+mgs_fs_name:
+nagios_web_password:
+
+# Infiniband
+infiniband: no
+ipoib: no
+sms_ipoib:
+ipoib_netmask:
+
