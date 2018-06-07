@@ -1,0 +1,7 @@
+---
+
+- name: OpenHPC compilers - install via Yum
+  yum:
+    name: {{item}}
+    state: present
+  with_items: "{{compilers}}"

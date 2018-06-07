@@ -7,3 +7,5 @@
     - master/ohpc_repo
     - master/xcat_base
     - master/pbs
+    - compilers
+    - mpi_libs

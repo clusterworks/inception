@@ -30,6 +30,10 @@ iso_path:
 ohpc_repo_dir:
 epel_repo_dir:
 
+# Development tools
+compilers: ['gnu7-compilers-ohpc']
+mpi_libs: ['openmpi3-gnu7-ohpc', 'mpich-gnu7-ohpc']
+
 # Extras
 # Which extras to enable, e.g. ['lustre', 'nagios', 'ganglia']
 enable_extras: []
