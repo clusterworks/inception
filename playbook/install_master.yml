@@ -4,5 +4,5 @@
     - ../config.yml
   roles:
     - common/firewall
-    - master/ohpc_local
+    - master/ohpc_repo
     - master/xcat_base

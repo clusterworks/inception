@@ -20,19 +20,3 @@
   yum:
     name: xCAT
     state: present
-
-- name: Register internal provisioning interface with xCAT for DHCP
-  command: 'chdef -t site dhcpinterfaces="xcatmn|{{sms_eth_internal}}"'
-
-- name: xCAT - copy node OS install media
-  copy:
-    src: "{{iso_path}}"
-    dest: "/tmp/node.iso"
-
-- name: xCAT - import node OS install media
-  command: 'copycds /tmp/node.iso/'
-
-- name: xCAT - clean up node OS install media
-  file:
-    path: "/tmp/node.iso"
-    state: absent

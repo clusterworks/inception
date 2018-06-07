@@ -1,0 +1,27 @@
+---
+
+- name: xCAT - register internal provisioning interface for DHCP
+  command: 'chdef -t site dhcpinterfaces="xcatmn|{{sms_eth_internal}}"'
+
+- name: xCAT - copy node OS install media
+  copy:
+    src: "{{iso_path}}"
+    dest: "/tmp/node.iso"
+
+- name: xCAT - import node OS install media
+  command: 'copycds /tmp/node.iso/'
+
+- name: xCAT - clean up node OS install media
+  file:
+    path: "/tmp/node.iso"
+    state: absent
+
+- name: xCAT - set node root password
+  command: "chtab key=system passwd.username=root passwd.password={{node_root_password}}"
+
+- name: xCAT - set domain name
+  command: "chdef -t site domain={{domain_name}}"
+
+- name: xCAT - set Infiniband network
+  command: "chdef -t network -o ib0 mask={{ipoib_netmask}} net={{sms_ipoib}}"
+  when: ipoib == 'yes'

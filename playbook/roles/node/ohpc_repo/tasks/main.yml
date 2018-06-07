@@ -1,7 +1,4 @@
 ---
 
-- import_tasks: centos-stateful.yml
-  when: (ansible_distribution == 'CentOS') and
-        (
-          (deploy == 'xCAT' and xcat_mode == 'stateful')
-        )
+- import_tasks: centos.yml
+  when: (ansible_distribution == 'CentOS')

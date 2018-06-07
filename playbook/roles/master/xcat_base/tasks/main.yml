@@ -5,14 +5,6 @@
     - ansible_distribution == 'CentOS'
     - deploy == 'xCAT'
 
-- name: xCAT - set node root password
-  command: "chtab key=system passwd.username=root passwd.password={{node_root_password}}"
-  when: deploy == 'xCAT'
-
-- name: xCAT - set domain name
-  command: "chdef -t site domain={{domain_name}}"
-  when: deploy == 'xCAT'
-
-- name: xCAT - set Infiniband network
-  command: "chdef -t network -o ib0 mask={{ipoib_netmask}} net={{sms_ipoib}}"
-  when: deploy == 'xCAT' and ipoib == 'yes'
+- import_tasks: common.yml
+  when:
+    - deploy == 'xCAT'
