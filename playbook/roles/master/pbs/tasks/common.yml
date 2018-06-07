@@ -27,14 +27,14 @@
 - name: PBS - enable mom in pbs.conf
   lineinfile:
     path: /etc/pbs.conf
-    regexp: '^PBS_START_SERVER='
+    regexp: '^PBS_START_MOM='
     line: 'PBS_START_MOM=1'
   when: sms_accept_jobs
 
 - name: PBS - disable mom in pbs.conf
   lineinfile:
     path: /etc/pbs.conf
-    regexp: '^PBS_START_SERVER='
+    regexp: '^PBS_START_MOM='
     line: 'PBS_START_MOM=0'
   when: not sms_accept_jobs
 
