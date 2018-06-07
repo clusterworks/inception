@@ -27,6 +27,7 @@ bmc_password:
 
 # Repository settings
 iso_path:
+ohpc_local_mirror: no
 ohpc_repo_dir:
 epel_repo_dir:
 
