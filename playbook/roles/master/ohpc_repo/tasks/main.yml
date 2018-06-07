@@ -1,7 +1,7 @@
 ---
 
 - import_tasks: mirror.yml
-  when: ohpc_local_mirror == 'yes'
+  when: ohpc_local_mirror == yes
 
 - import_tasks: centos.yml
   when: (ansible_distribution == 'CentOS')
