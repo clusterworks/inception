@@ -6,3 +6,5 @@
     - validation/config
     - validation/hostname
     - validation/selinux
+    - validation/ssh
+    - validation/network
