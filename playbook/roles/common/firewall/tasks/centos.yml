@@ -1,6 +1,6 @@
 ---
 
-- name: Disable the firewall on CentOS for installation
+- name: Firewall - disable firewalld for installation
   service:
     name: firewalld
     enabled: no
