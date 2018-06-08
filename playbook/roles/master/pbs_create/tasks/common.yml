@@ -5,7 +5,7 @@
     nodes_to_check: "{{group['nodes']}}"
 
 - name: PBS - check if nodes are defined
-  shell: "true"
+  shell: "qmgr -c 'print node {{item}}'"
   register: r
   changed_when: r.rc == 1
   failed_when: rc.rc > 1
