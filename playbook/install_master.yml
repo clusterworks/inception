@@ -9,6 +9,7 @@
     - validation/ssh
     - validation/network
     - common/firewall
+    - common/ntp
     - master/ohpc_repo
     - master/xcat_base
     - master/pbs

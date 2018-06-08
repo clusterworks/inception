@@ -4,5 +4,6 @@
   vars_files:
     - ../config.yml
   roles:
+    - common/ntp
     - node/ohpc_repo
     - mpi_libs
