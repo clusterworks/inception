@@ -76,6 +76,8 @@
 - name: Validate config - check ISO file exists
   stat:
     path: "{{iso_path}}"
+    get_md5: no
+    get_checksum: no
   register: stat_iso
   failed_when: stat_iso.stat.exists == False
 
