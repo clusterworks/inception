@@ -35,10 +35,15 @@
     - "makedhcp -n"
     - "makedns -n"
 
-- name: xCAT - associate CentOS 7 stateful provisioning image
-  shell: "nodeset compute osimage=centos7.4-x86_64-install-compute"
+- name: xCAT - query install image for stateful cluster
+  shell: "lsdef -t osimage | grep install-compute"
+  register: osimage
   when: xcat_mode == 'stateful'
 
-- name: xCAT - associate CentOS 7 stateless provisioning image
-  shell: "nodeset compute osimage=centos7.4-x86_64-netboot-compute"
+- name: xCAT - query netboot image for stateless cluster
+  shell: "lsdef -t osimage | grep netboot-compute"
+  register: osimage
   when: xcat_mode == 'stateless'
+
+- name: xCAT - associate provisioning image to compute nodes
+  shell: "nodeset compute osimage={{osimage.stdout|trim}}"
