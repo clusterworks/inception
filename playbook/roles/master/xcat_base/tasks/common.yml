@@ -15,3 +15,12 @@
 - name: xCAT - set Infiniband network
   command: "chdef -t network -o ib0 mask={{ipoib_netmask}} net={{sms_ipoib}}"
   when: ipoib
+
+- name: xCAT - query netboot image for stateless cluster
+  shell: "lsdef -t osimage | grep netboot"
+  register: lsdef_netboot
+  when: xcat_mode == 'stateless'
+
+- name: xCAT - build initial chroot image for stateless cluster
+  command: "genimage {{lsdef_netboot.stdout|trim}}"
+  when: xcat_mode == 'stateless'
