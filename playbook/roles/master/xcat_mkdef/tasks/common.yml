@@ -36,11 +36,11 @@
     - "makedns -n"
 
 - name: xCAT - query install image for stateful cluster
-  shell: "lsdef -t osimage | grep install-compute"
+  shell: "lsdef -t osimage | grep install-compute | awk '{print $1}'"
   register: osimage_stateful
 
 - name: xCAT - query netboot image for stateless cluster
-  shell: "lsdef -t osimage | grep netboot-compute"
+  shell: "lsdef -t osimage | grep netboot-compute | awk '{print $1}'"
   register: osimage_stateless
 
 - name: xCAT - associate stateful provisioning image to compute nodes

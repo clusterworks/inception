@@ -17,7 +17,7 @@
   when: ipoib
 
 - name: xCAT - query netboot image for stateless cluster
-  shell: "lsdef -t osimage | grep netboot"
+  shell: "lsdef -t osimage | grep netboot | awk '{print $1}'"
   register: osimage
   when: xcat_mode == 'stateless'
 
