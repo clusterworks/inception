@@ -5,3 +5,4 @@
   roles:
     - validation/config
     - validation/hostname
+    - validation/selinux
