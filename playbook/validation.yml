@@ -1,0 +1,6 @@
+---
+- hosts: master
+  vars_files:
+    - ../config.yml
+  roles:
+    - validation/config
