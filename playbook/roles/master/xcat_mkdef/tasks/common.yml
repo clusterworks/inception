@@ -46,4 +46,4 @@
   when: xcat_mode == 'stateless'
 
 - name: xCAT - associate provisioning image to compute nodes
-  shell: "nodeset compute osimage={{osimage.stdout|trim}}"
+  shell: "nodeset compute osimage={{osimage.stdout_lines[0]}}"

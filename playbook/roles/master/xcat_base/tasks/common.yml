@@ -22,5 +22,5 @@
   when: xcat_mode == 'stateless'
 
 - name: xCAT - build initial chroot image for stateless cluster
-  command: "genimage {{lsdef_netboot.stdout|trim}}"
+  command: "genimage {{lsdef_netboot.stdout_lines[0]}}"
   when: xcat_mode == 'stateless'
