@@ -2,7 +2,7 @@
 
 - name: xCAT - get list of nodes to check
   set_fact:
-    nodes_to_check: "{{group['nodes']}}"
+    nodes_to_check: "{{groups['nodes']}}"
 
 - name: xCAT - check if nodes are defined
   shell: "lsdef {{hostvars[item]['name']}}"
