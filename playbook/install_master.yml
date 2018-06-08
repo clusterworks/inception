@@ -3,9 +3,15 @@
   vars_files:
     - ../config.yml
   roles:
+    - validation/config
+    - validation/hostname
+    - validation/selinux
+    - validation/ssh
+    - validation/network
     - common/firewall
     - master/ohpc_repo
     - master/xcat_base
     - master/pbs
     - compilers
     - mpi_libs
+
