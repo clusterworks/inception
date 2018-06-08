@@ -12,7 +12,7 @@
   with_items: "{{nodes_to_check}}"
 
 - name: xCAT - define nodes in the database
-  shell: "mkdef -t node {{hostvars[item.item]['name']}} groups=compute,all ip={{item.item}} mac={{hostvars[item.item]['mac'] netboot=xnba arch=x86_64 bmc={{hostvars[item.item]['bmc']}} bmcusername={{bmc_username}} bmcpassword={{bmc_password}} mgt=ipmi serialport=0 serialspeed=115200"
+  shell: "mkdef -t node {{hostvars[item.item]['name']}} groups=compute,all ip={{item.item}} mac={{hostvars[item.item]['mac']}} netboot=xnba arch=x86_64 bmc={{hostvars[item.item]['bmc']}} bmcusername={{bmc_username}} bmcpassword={{bmc_password}} mgt=ipmi serialport=0 serialspeed=115200"
   with_items: "{{r.results}}"
   when: item.changed
 
