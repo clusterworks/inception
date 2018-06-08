@@ -12,6 +12,7 @@
     - common/ntp
     - master/ohpc_repo
     - master/xcat_base
+    - master/nfs
     - master/pbs
     - compilers
     - mpi_libs
