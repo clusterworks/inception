@@ -8,7 +8,7 @@
   shell: "qmgr -c 'print node {{item}}'"
   register: r
   changed_when: r.rc == 1
-  failed_when: rc.rc > 1
+  failed_when: r.rc > 1
   with_items: "{{nodes_to_check}}"
 
 - name: PBS - define nodes in the database

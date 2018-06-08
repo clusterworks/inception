@@ -8,7 +8,7 @@
   shell: "lsdef {{hostvars[item]['name']}}"
   register: r
   changed_when: r.rc == 1
-  failed_when: rc.rc > 1
+  failed_when: r.rc > 1
   with_items: "{{nodes_to_check}}"
 
 - name: xCAT - define nodes in the database
