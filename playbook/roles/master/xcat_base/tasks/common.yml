@@ -24,3 +24,19 @@
 - name: xCAT - build initial chroot image for stateless cluster
   command: "genimage {{osimage.stdout_lines[0]}}"
   when: xcat_mode == 'stateless'
+
+- name: xCAT - install updated xNBA based on latest iPXE (bios)
+  copy:
+    src: xnba.kpxe
+    dest: /tftpboot/xcat/xnba.kpxe
+    owner: root
+    group: root
+    mode: 0644
+
+- name: xCAT - install updated xNBA based on latest iPXE (efi)
+  copy:
+    src: xnba.efi
+    dest: /tftpboot/xcat/xnba.efi
+    owner: root
+    group: root
+    mode: 0644
