@@ -4,3 +4,4 @@
     - ../config.yml
   roles:
     - validation/config
+    - validation/hostname
