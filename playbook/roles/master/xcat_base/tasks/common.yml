@@ -18,9 +18,9 @@
 
 - name: xCAT - query netboot image for stateless cluster
   shell: "lsdef -t osimage | grep netboot"
-  register: lsdef_netboot
+  register: osimage
   when: xcat_mode == 'stateless'
 
 - name: xCAT - build initial chroot image for stateless cluster
-  command: "genimage {{lsdef_netboot.stdout_lines[0]}}"
+  command: "genimage {{osimage.stdout_lines[0]}}"
   when: xcat_mode == 'stateless'

@@ -37,13 +37,16 @@
 
 - name: xCAT - query install image for stateful cluster
   shell: "lsdef -t osimage | grep install-compute"
-  register: osimage
-  when: xcat_mode == 'stateful'
+  register: osimage_stateful
 
 - name: xCAT - query netboot image for stateless cluster
   shell: "lsdef -t osimage | grep netboot-compute"
-  register: osimage
-  when: xcat_mode == 'stateless'
+  register: osimage_stateless
 
-- name: xCAT - associate provisioning image to compute nodes
-  shell: "nodeset compute osimage={{osimage.stdout_lines[0]}}"
+- name: xCAT - associate stateful provisioning image to compute nodes
+  shell: "nodeset compute osimage={{osimage_stateful.stdout_lines[0]}}"
+  when: xcat_mode == 'stateful'
+
+- name: xCAT - associate stateless provisioning image to compute nodes
+  shell: "nodeset compute osimage={{osimage_stateless.stdout_lines[0]}}"
+  when: xcat_mode == 'stateless'
