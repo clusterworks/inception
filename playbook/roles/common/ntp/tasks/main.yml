@@ -1,5 +1,9 @@
 ---
 
+- import_tasks: centos.yml
+  when:
+    - ansible_distribution == 'CentOS'
+
 - name: "NTP - set {{ntp_server}} in /etc/ntp.conf"
   lineinfile:
     path: /etc/ntp.conf
