@@ -16,6 +16,6 @@
     - master/xcat_base
     - master/nfs
     - master/pbs
+    - ssh
     - compilers
     - mpi_libs
-

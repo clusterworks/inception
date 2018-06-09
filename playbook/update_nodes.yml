@@ -9,5 +9,6 @@
     - common/ntp
     - node/sync_files
     - node/nfs
+    - ssh
     - node/ohpc_base_compute
     - node/pbs
