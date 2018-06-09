@@ -29,6 +29,7 @@
   copy:
     src: xnba.kpxe
     dest: /tftpboot/xcat/xnba.kpxe
+    backup: yes
     owner: root
     group: root
     mode: 0644
@@ -37,6 +38,7 @@
   copy:
     src: xnba.efi
     dest: /tftpboot/xcat/xnba.efi
+    backup: yes
     owner: root
     group: root
     mode: 0644
