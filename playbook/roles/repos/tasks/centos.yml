@@ -16,7 +16,7 @@
     name: "{{ item }}"
     description: "Cache repository on SMS for {{ item }}"
     baseurl: "{{ yum_repos[item].url | regex_replace(yum_repos[item].url.rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
-    gpgkey: "{{ yum_repos[item].key }}"
+    gpgkey: "{{ yum_repos[item].key | regex_replace(yum_repos[item].url.rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
     gpgcheck: yes
     state: present
   with_items: "{{ yum_repos }}"
