@@ -1,9 +1,0 @@
----
-
-- name: Repositories - install online EPEL via Yum
-  yum:
-    name: "{{item}}"
-    state: present
-  with_items:
-    - epel-release
-  when: repository_type == 'online'

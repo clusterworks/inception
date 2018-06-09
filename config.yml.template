@@ -34,13 +34,15 @@ iso_path:
 # - cache       deploy squid to cache downloaded packages for compute nodes
 # - mirror      create a local repository mirror (requires large disk space)
 # - local       use already existing mirror that has been created on the master
+# When using online or cache, specify the upstream repo to use
 # When using a mirror or local, specify the filesystem path on the master
-# When using cache, specify which upstream server should be used to pull from
 repository_type: online
 ohpc_repo_dir:
 epel_repo_dir:
-ohpc_cache_peer: build.openhpc.community
-epel_cache_peer: download.fedoraproject.org
+yum_repos:
+  ohpc: "http://build.openhpc.community/OpenHPC:/1.3/CentOS_7"
+  ohpc_updates: "http://build.openhpc.community/OpenHPC:/1.3/updates/CentOS_7/"
+  epel: "http://mirror.netweaver.uk/epel/7/x86_64/"
 
 # Development tools
 compilers: ['gnu7-compilers-ohpc']

@@ -1,0 +1,9 @@
+---
+
+- name: "Repositories - add online {{item}} to /etc/yum.repos.d"
+  yum_repository:
+    baseurl: "{{ yum_repos[item] }}"
+    state: present
+    description: "{{ item }}"
+  with_items: "{{ yum_repos }}"
+  when: repository_type == 'online'
