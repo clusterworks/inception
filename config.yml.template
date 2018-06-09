@@ -43,7 +43,7 @@ yum_repos:
   ohpc: "http://build.openhpc.community/OpenHPC:/1.3/CentOS_7"
   ohpc_updates: "http://build.openhpc.community/OpenHPC:/1.3/updates/CentOS_7/"
   epel: "http://mirror.netweaver.uk/epel/7/x86_64/"
-cache_port: 3128
+cache_port: "3128"
 
 # Development tools
 compilers: ['gnu7-compilers-ohpc']
