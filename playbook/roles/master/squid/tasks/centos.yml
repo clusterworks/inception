@@ -13,7 +13,7 @@
 - name: Squid - add cache vhosts to /etc/hosts
   lineinfile:
     path: /etc/hosts
-    regexp: '^{{ sms_ip | regex_escape() }} ohpc.*'
+    regexp: '^{{ sms_ip | regex_escape() }} {{ item }}.*'
     line: '{{ sms_ip }} {{ item }}_cache.{{ sms_name }}.{{ domain_name }}'
   with_items: "{{ yum_repos }}"
 
