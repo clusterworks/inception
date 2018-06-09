@@ -85,7 +85,7 @@
   assert:
     that:
       - repository_type is defined
-      - "repository_type in ['online', 'cache', 'local']"
+      - "repository_type in ['online', 'cache', 'mirror', 'local']"
 
 - name: Validate config - check local OpenHPC mirror path is defined
   assert:
@@ -93,7 +93,7 @@
       - ohpc_repo_dir is defined
       - ohpc_repo_dir != none
       - (ohpc_repo_dir | trim != '')
-  when: repository_type == 'local'
+  when: repository_type == 'local' or repository_type == 'mirror'
 
 - name: Validate config - check local EPEL mirror path is defined
   assert:
@@ -102,7 +102,7 @@
       - epel_repo_dir != none
       - (epel_repo_dir | trim != '')
   when:
-    - repository_type == 'local'
+    - repository_type == 'local' or repository_type == 'mirror'
     - ansible_distribution == 'CentOS'
 
 - name: Validate config - check at least 1 compiler has been defined

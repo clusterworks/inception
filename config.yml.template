@@ -33,6 +33,7 @@ iso_path:
 # - online      download all packages from upstream
 # - cache       deploy squid to cache downloaded packages for compute nodes
 # - mirror      create a local repository mirror (requires large disk space)
+# - local       use already existing mirror that has been created on the master
 repository_type: online
 ohpc_repo_dir:
 epel_repo_dir:
