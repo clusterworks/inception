@@ -2,7 +2,7 @@
 
 - name: OpenHPC - skip installing documentation on compute nodes
   lineinfile:
-    path: "/{{ remote_user }}/.rpmmacros"
+    path: "{{ ansible_env.HOME }}/.rpmmacros"
     line: '%_excludedocs 1'
 
 - name: OpenHPC - install ohpc-base-compute via Yum
