@@ -42,3 +42,12 @@
     owner: root
     group: root
     mode: 0644
+
+- name: xCAT - copy new xNBA plugin to remove BOOTIF argument
+  copy:
+    src: xnba.pm
+    dest: /opt/xcat//lib/perl/xCAT_plugin/xnba.pm
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
