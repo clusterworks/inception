@@ -7,7 +7,7 @@
 
 - name: Squid - configure /etc/squid.conf
   template:
-    src: "{{ role_path}}/files/squid.conf.j2"
+    src: "{{ role_path }}/files/squid.conf.j2"
     dest: /etc/squid/squid.conf
 
 - name: Squid - add OpenHPC cache mirror vhost to /etc/hosts
