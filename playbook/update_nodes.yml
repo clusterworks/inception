@@ -4,6 +4,6 @@
   vars_files:
     - ../config.yml
   roles:
+    - repos
     - common/firewall
     - common/ntp
-    - repos
