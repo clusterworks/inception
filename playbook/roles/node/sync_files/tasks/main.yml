@@ -1,0 +1,7 @@
+---
+
+- name: Sync files - get /etc/hosts from headnode
+  synchronize:
+    src: /etc/hosts
+    dest: /etc/hosts
+  delegate_to: "{{groups['master'][0]}}"

@@ -7,3 +7,4 @@
     - repos
     - common/firewall
     - common/ntp
+    - node/sync_files
