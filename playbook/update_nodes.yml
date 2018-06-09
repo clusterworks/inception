@@ -8,5 +8,6 @@
     - common/firewall
     - common/ntp
     - node/sync_files
+    - node/nfs
     - node/ohpc_base_compute
     - node/pbs
