@@ -24,11 +24,11 @@
     regexp: '^PBS_START_SCHED='
     line: 'PBS_START_SCHED=0'
 
-- name: PBS - enable comm in pbs.conf
+- name: PBS - disable comm in pbs.conf
   lineinfile:
     path: /etc/pbs.conf
     regexp: '^PBS_START_COMM='
-    line: 'PBS_START_COMM=1'
+    line: 'PBS_START_COMM=0'
 
 - name: PBS - enable mom in pbs.conf
   lineinfile:
