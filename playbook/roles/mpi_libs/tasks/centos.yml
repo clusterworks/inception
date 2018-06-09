@@ -1,7 +1,0 @@
----
-
-- name: OpenHPC MPI - install via Yum
-  yum:
-    name: "{{item}}"
-    state: present
-  with_items: "{{mpi_libs}}"

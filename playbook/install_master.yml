@@ -17,5 +17,4 @@
     - master/nfs
     - master/pbs
     - ssh
-    - compilers
-    - mpi_libs
+    - dev_tools

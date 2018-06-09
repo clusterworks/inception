@@ -48,6 +48,7 @@ cache_port: "3128"
 # Development tools
 compilers: ['gnu7-compilers-ohpc']
 mpi_libs: ['openmpi3-gnu7-ohpc', 'mpich-gnu7-ohpc']
+default_env: lmod-defaults-gnu7-openmpi3-ohpc
 
 # Extras
 # Which extras to enable, e.g. ['lustre', 'nagios', 'ganglia']
