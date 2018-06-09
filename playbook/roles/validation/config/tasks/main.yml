@@ -81,11 +81,11 @@
   register: stat_iso
   failed_when: stat_iso.stat.exists == False
 
-- name: Validate config - check whether to create a local OpenHPC mirror is defined
+- name: Validate config - check valid repository type is defined
   assert:
     that:
-      - ohpc_local_mirror is defined
-      - ohpc_local_mirror != none
+      - repository_type is defined
+      - "repository_type in ['online', 'cache', 'local']"
 
 - name: Validate config - check local OpenHPC mirror path is defined
   assert:
@@ -93,7 +93,17 @@
       - ohpc_repo_dir is defined
       - ohpc_repo_dir != none
       - (ohpc_repo_dir | trim != '')
-  when: ohpc_local_mirror
+  when: repository_type == 'local'
+
+- name: Validate config - check local EPEL mirror path is defined
+  assert:
+    that:
+      - epel_repo_dir is defined
+      - epel_repo_dir != none
+      - (epel_repo_dir | trim != '')
+  when:
+    - repository_type == 'local'
+    - ansible_distribution == 'CentOS'
 
 - name: Validate config - check at least 1 compiler has been defined
   assert:
