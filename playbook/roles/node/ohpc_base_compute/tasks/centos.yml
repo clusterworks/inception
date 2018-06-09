@@ -1,7 +1,17 @@
 ---
 
+- name: OpenHPC - skip installing documentation on compute nodes
+  lineinfile:
+    path: "/{{ remote_user }}/.rpmmacros"
+    line: '%_excludedocs 1'
+
 - name: OpenHPC - install ohpc-base-compute via Yum
   yum:
     name: ohpc-base-compute
+    state: present
+
+- name: OpenHPC - install modules user environment via Yum
+  yum:
+    name: lmod-ohpc
     state: present
 
