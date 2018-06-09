@@ -10,3 +10,6 @@
     - "/etc/passwd"
     - "/etc/group"
     - "/etc/shadow"
+  tags:
+    - sync
+    - sync_files
