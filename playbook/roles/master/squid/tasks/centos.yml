@@ -1,0 +1,29 @@
+---
+
+- name: Squid - install via Yum
+  yum:
+    name: squid
+    state: present
+
+- name: Squid - configure /etc/squid.conf
+  template:
+    src: squid.conf.j2
+    dest: /etc/squid/squid.conf
+
+- name: Squid - add OpenHPC cache mirror vhost to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^{{ sms_ip | regex_escape() }} ohpc.*'
+    line: '{{ sms_ip }} ohpc_mirror.{{ sms_name }}.{{ domain_name }}'
+
+- name: Squid - add EPEL cache mirror vhost to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^{{ sms_ip | regex_escape() }} epel.*'
+    line: '{{ sms_ip }} epel_mirror.{{ sms_name }}.{{ domain_name }}'
+
+- name: Squid - ensure service is enabled and started
+  service:
+    name: squid
+    enabled: yes
+    state: started
