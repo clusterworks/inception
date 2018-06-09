@@ -27,3 +27,4 @@
     baseurl: "http://{{ sms_ip }}//install/local_repo/"
     gpgcheck: no
     state: present
+  when: ansible_hostname != sms_name
