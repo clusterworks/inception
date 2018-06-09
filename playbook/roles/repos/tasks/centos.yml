@@ -19,3 +19,11 @@
     state: present
   with_items: "{{ yum_repos }}"
   when: repository_type == 'cache'
+
+- name: "Repositories - add the SMS local repository to /etc/yum.repos.d"
+  yum_repository:
+    name: "{{ item }}"
+    description: "Local repository to distribute individual RPMs to the cluster"
+    baseurl: "http://{{ sms_ip }}//install/local_repo/"
+    gpgcheck: no
+    state: present

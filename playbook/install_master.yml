@@ -11,6 +11,7 @@
     - common/firewall
     - common/ntp
     - repos
+    - master/local_repo
     - master/ohpc_base
     - master/xcat_base
     - master/nfs
