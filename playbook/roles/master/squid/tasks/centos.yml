@@ -10,17 +10,17 @@
     src: "{{ role_path }}/files/squid.conf.j2"
     dest: /etc/squid/squid.conf
 
-- name: Squid - add OpenHPC cache mirror vhost to /etc/hosts
+- name: Squid - add OpenHPC cache vhost to /etc/hosts
   lineinfile:
     path: /etc/hosts
     regexp: '^{{ sms_ip | regex_escape() }} ohpc.*'
-    line: '{{ sms_ip }} ohpc_mirror.{{ sms_name }}.{{ domain_name }}'
+    line: '{{ sms_ip }} ohpc_cache.{{ sms_name }}.{{ domain_name }}'
 
-- name: Squid - add EPEL cache mirror vhost to /etc/hosts
+- name: Squid - add EPEL cache vhost to /etc/hosts
   lineinfile:
     path: /etc/hosts
     regexp: '^{{ sms_ip | regex_escape() }} epel.*'
-    line: '{{ sms_ip }} epel_mirror.{{ sms_name }}.{{ domain_name }}'
+    line: '{{ sms_ip }} epel_cache.{{ sms_name }}.{{ domain_name }}'
 
 - name: Squid - ensure service is enabled and started
   service:
