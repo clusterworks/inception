@@ -41,7 +41,3 @@
     name: pbs
     enabled: yes
     state: started
-
-- name: PBS - wait for the client to complete start up
-  pause:
-    minutes: 1
