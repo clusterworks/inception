@@ -22,7 +22,7 @@
 
 - name: "Repositories - add the SMS local repository to /etc/yum.repos.d"
   yum_repository:
-    name: "{{ item }}"
+    name: "sms_local_repo"
     description: "Local repository to distribute individual RPMs to the cluster"
     baseurl: "http://{{ sms_ip }}//install/local_repo/"
     gpgcheck: no
