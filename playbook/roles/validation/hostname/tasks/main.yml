@@ -4,3 +4,8 @@
   assert:
     that:
       - ansible_hostname == sms_name
+
+- name: Validate hostname - check hostname is set in /etc/hosts
+  command: "grep -R '^{{ sms_ip | regex_escape() }}.*{{ sms_name | regex_escape() }}.{{ domain_name | regex_escape() }}' /etc/hosts"
+  register: hostgrep
+  failed_when: hostgrep.rc > 0
