@@ -39,8 +39,8 @@ iso_path:
 repository_type: online
 ohpc_repo_dir:
 epel_repo_dir:
-ohpc_cache_peer:
-epel_cache_peer:
+ohpc_cache_peer: build.openhpc.community
+epel_cache_peer: download.fedoraproject.org
 
 # Development tools
 compilers: ['gnu7-compilers-ohpc']
