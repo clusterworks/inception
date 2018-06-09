@@ -2,6 +2,7 @@
 
 - name: OpenHPC - skip installing documentation on compute nodes
   lineinfile:
+    create: yes
     path: "{{ ansible_env.HOME }}/.rpmmacros"
     line: '%_excludedocs 1'
 
