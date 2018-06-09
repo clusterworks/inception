@@ -44,7 +44,7 @@
     enabled: yes
     state: started
 
-- name: PBS - wait for the server to start up
+- name: PBS - wait for the server to complete start up
   pause:
     minutes: 1
 
