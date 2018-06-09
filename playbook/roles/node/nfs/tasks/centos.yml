@@ -20,7 +20,7 @@
 
 - name: NFS - add /opt/ohpc/pub mount from SMS
   mount:
-    path: /home
+    path: /opt/ohpc/pub
     src: "{{ sms_ip }}:/opt/ohpc/pub"
     fstype: nfs
     opts: nfsvers=3,nodev,noatime
