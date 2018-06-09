@@ -10,6 +10,7 @@
     - validation/network
     - common/firewall
     - common/ntp
+    - master/squid
     - repos
     - master/local_repo
     - master/ohpc_base
