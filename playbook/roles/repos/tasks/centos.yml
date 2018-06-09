@@ -8,3 +8,4 @@
     state: present
   with_items: "{{ yum_repos }}"
   when: repository_type == 'online'
+
