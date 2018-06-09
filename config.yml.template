@@ -29,7 +29,11 @@ bmc_password:
 iso_path:
 
 # Repository settings
-ohpc_local_mirror: no
+# Valid repository types:
+# - online      download all packages from upstream
+# - cache       deploy squid to cache downloaded packages for compute nodes
+# - mirror      create a local repository mirror (requires large disk space)
+repository_type: online
 ohpc_repo_dir:
 epel_repo_dir:
 

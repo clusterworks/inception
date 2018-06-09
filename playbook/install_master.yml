@@ -10,7 +10,9 @@
     - validation/network
     - common/firewall
     - common/ntp
-    - master/ohpc_repo
+    - repos/epel
+    - repos/ohpc
+    - master/ohpc_base
     - master/xcat_base
     - master/nfs
     - master/pbs

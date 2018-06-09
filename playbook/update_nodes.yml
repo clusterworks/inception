@@ -4,6 +4,7 @@
   vars_files:
     - ../config.yml
   roles:
+    - common/firewall
     - common/ntp
-    - node/ohpc_repo
-    - mpi_libs
+    - repos/epel
+    - repos/ohpc
