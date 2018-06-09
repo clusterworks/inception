@@ -40,9 +40,15 @@ repository_type: online
 ohpc_repo_dir:
 epel_repo_dir:
 yum_repos:
-  ohpc: "http://build.openhpc.community/OpenHPC:/1.3/CentOS_7"
-  ohpc_updates: "http://build.openhpc.community/OpenHPC:/1.3/updates/CentOS_7/"
-  epel: "http://mirror.netweaver.uk/epel/7/x86_64/"
+  ohpc:
+    url: "http://build.openhpc.community/OpenHPC:/1.3/CentOS_7"
+    key: "http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/repodata/repomd.xml.key"
+  ohpc_updates:
+    url: "http://build.openhpc.community/OpenHPC:/1.3:/Update4/CentOS_7/"
+    key: "http://build.openhpc.community/OpenHPC:/1.3:/Update4/CentOS_7/repodata/repomd.xml.key"
+  epel:
+    url: "http://mirror.netweaver.uk/epel/7/x86_64/"
+    key: "https://archive.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7"
 cache_port: "3128"
 
 # Development tools

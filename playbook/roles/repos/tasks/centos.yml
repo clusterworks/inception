@@ -5,7 +5,8 @@
     name: "{{ item }}"
     description: "Online repository for {{ item }}"
     baseurl: "{{ yum_repos[item] }}"
-    gpgcheck: no
+    gpgkey: "{{ yum_repos[item].key }}"
+    gpgcheck: yes
     state: present
   with_items: "{{ yum_repos }}"
   when: repository_type == 'online'
@@ -14,8 +15,9 @@
   yum_repository:
     name: "{{ item }}"
     description: "Cache repository on SMS for {{ item }}"
-    baseurl: "{{ yum_repos[item] | regex_replace(yum_repos[item].rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
-    gpgcheck: no
+    baseurl: "{{ yum_repos[item].url | regex_replace(yum_repos[item].url.rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
+    gpgkey: "{{ yum_repos[item].key }}"
+    gpgcheck: yes
     state: present
   with_items: "{{ yum_repos }}"
   when: repository_type == 'cache'

@@ -48,7 +48,7 @@ refresh_pattern .               0       20%     4320
 
 {% if ansible_distribution == 'CentOS' %}
 {% for repo in yum_repos %}
-cache_peer {{ yum_repos[repo].rpartition("//")[-1].partition("/")[0] }} parent 80 0 no-query originserver name={{ repo }}
+cache_peer {{ yum_repos[repo].url.rpartition("//")[-1].partition("/")[0] }} parent 80 0 no-query originserver name={{ repo }}
 cache_peer_domain {{ repo }} {{ repo }}_cache.{{ sms_name }}.{{ domain_name }}
 {% endfor %}
 {% endif %}
