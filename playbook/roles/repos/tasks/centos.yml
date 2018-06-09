@@ -29,4 +29,8 @@
     baseurl: "http://{{ sms_ip }}//install/local_repo/"
     gpgcheck: no
     state: present
-  when: ansible_hostname != sms_name
+  when: hostvars[inventory_hostname].group_names[0] == "nodes"
+
+- name: "Repositories - remove upstream CentOS repositories"
+  command: "rm -rf /etc/yum.repos.d/CentOS-*.repo"
+  when: hostvars[inventory_hostname].group_names[0] == "nodes"
