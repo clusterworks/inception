@@ -9,3 +9,11 @@
   with_items: "{{ yum_repos }}"
   when: repository_type == 'online'
 
+- name: "Repositories - add cache repositories to /etc/yum.repos.d"
+  yum_repository:
+    name: "{{ item }}"
+    description: "Cache repository on SMS for {{ item }}"
+    baseurl: "{{ yum_repos[item] | regex_replace(yum_repos[item].rpartition("//")[-1].partition("/")[0], item+'_cache.'+sms_name+'.'+domain_name) }}"
+    state: present
+  with_items: "{{ yum_repos }}"
+  when: repository_type == 'cache'
