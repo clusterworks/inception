@@ -1,6 +1,6 @@
 ---
 
-- name: Repositories - install EPEL via Yum
+- name: Repositories - install online EPEL via Yum
   yum:
     name: "{{item}}"
     state: present
