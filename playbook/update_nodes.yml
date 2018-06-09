@@ -8,3 +8,4 @@
     - common/firewall
     - common/ntp
     - node/sync_files
+    - node/ohpc_base_compute

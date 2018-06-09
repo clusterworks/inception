@@ -1,0 +1,7 @@
+---
+
+- name: OpenHPC - install ohpc-base-compute via Yum
+  yum:
+    name: ohpc-base-compute
+    state: present
+
