@@ -11,7 +11,7 @@
     src: "{{ sms_ip }}:/home"
     fstype: nfs
     opts: nfsvers=3,nodev,nosuid,noatime
-    state: present
+    state: mounted
 
 - name: NFS - make sure mountpoint exists
   file:
@@ -24,4 +24,4 @@
     src: "{{ sms_ip }}:/opt/ohpc/pub"
     fstype: nfs
     opts: nfsvers=3,nodev,noatime
-    state: present
+    state: mounted
