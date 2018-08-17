@@ -4,7 +4,7 @@
   yum_repository:
     name: "{{ item }}"
     description: "Online repository for {{ item }}"
-    baseurl: "{{ yum_repos[item] }}"
+    baseurl: "{{ yum_repos[item].url }}"
     gpgkey: "{{ yum_repos[item].key }}"
     gpgcheck: yes
     state: present
