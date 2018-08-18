@@ -17,7 +17,7 @@
     state: present
     regexp: "proxy=.*"
     insertafter: EOF
-    line: "proxy=http://{{ proxy_host }}:{{ proxy_port }}/"
+    line: "proxy=http://{{ sms_host }}.{{ domain_name}}:{{ cache_port }}/"
   when: repository_type == 'cache'
 
 - name: "Repositories - add the SMS local repository to /etc/yum.repos.d"
