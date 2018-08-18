@@ -26,8 +26,23 @@
     description: "Local repository to distribute individual RPMs to the cluster"
     baseurl: "http://{{ sms_ip }}//install/local_repo/"
     gpgcheck: no
+    proxy: "_none_"
     state: present
   when: hostvars[inventory_hostname].group_names[0] == "nodes"
+
+- name: "Repositories - check local Yum repo for xCAT node"
+  stat:
+    path: /etc/yum.repos.d/local-repository-0.repo
+  register: yum_xcat_stat
+
+- name: "Repositories - bypass proxy for local Yum repo on xCAT nodes"
+  lineinfile:
+    dest: /etc/yum.repos.d/local-repository-0.repo
+    state: present
+    regexp: "proxy=.*"
+    insertafter: EOF
+    line: "proxy=_none_"
+  when: yum_xcat_stat.stat.exists == True
 
 - name: "Repositories - remove upstream CentOS repositories"
   command: "rm -rf /etc/yum.repos.d/CentOS-*.repo"
