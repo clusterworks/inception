@@ -6,7 +6,7 @@
     description: "Online repository for {{ item }}"
     baseurl: "{{ yum_repos[item].url }}"
     gpgkey: "{{ yum_repos[item].key }}"
-    gpgcheck: yes
+    gpgcheck: "{{ package_signing }}"
     state: present
   with_items: "{{ yum_repos }}"
   when: repository_type == 'online' or repository_type == 'cache'

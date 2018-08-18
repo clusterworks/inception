@@ -43,7 +43,10 @@ proxy_password:
 # - local       use already existing mirror that has been created on the master
 # When using online or cache, specify the upstream repo to use
 # When using a mirror or local, specify the filesystem path on the master
+# Where a repository supports package signing, e.g. gpgcheck, it might not work
+# behind a proxy, so the default is to disable. 
 repository_type: online
+package_signing: no
 ohpc_repo_dir:
 epel_repo_dir:
 yum_repos:
