@@ -31,7 +31,7 @@ http_access allow localhost
 
 http_access deny all
 
-http_port {{ cache_port }} accel defaultsite={{ yum_repos.keys()[0] }}.{{ sms_name }}.{{ domain_name }} vhost
+http_port {{ cache_port }} 
 
 cache_dir ufs /var/spool/squid 10000 16 256
 cache_replacement_policy heap LFUDA
@@ -47,10 +47,8 @@ refresh_pattern ^gopher:        1440    0%      1440
 refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
 refresh_pattern .               0       20%     4320
 
-{% if ansible_distribution == 'CentOS' %}
-{% for repo in yum_repos %}
-cache_peer {{ yum_repos[repo].url.rpartition("//")[-1].partition("/")[0] }} parent 80 0 no-query originserver name={{ repo }}
-cache_peer_domain {{ repo }} {{ repo }}_cache.{{ sms_name }}.{{ domain_name }}
-{% endfor %}
+{% if proxy_host != '' %}
+cache_peer {{ proxy_host }} parent {{ proxy_port }} 0 no-query no-digest
 {% endif %}
+
 

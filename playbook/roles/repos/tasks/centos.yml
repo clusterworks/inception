@@ -9,17 +9,15 @@
     gpgcheck: yes
     state: present
   with_items: "{{ yum_repos }}"
-  when: repository_type == 'online'
+  when: repository_type == 'online' or repository_type == 'cache'
 
-- name: "Repositories - add cache repositories to /etc/yum.repos.d"
-  yum_repository:
-    name: "{{ item }}"
-    description: "Cache repository on SMS for {{ item }}"
-    baseurl: "{{ yum_repos[item].url | regex_replace(yum_repos[item].url.rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
-    gpgkey: "{{ yum_repos[item].key | regex_replace(yum_repos[item].url.rpartition('//')[-1].partition('/')[0], item+'_cache.'+sms_name+'.'+domain_name+':'+cache_port) }}"
-    gpgcheck: yes
+- name: "Repositories - set the Yum proxy to the local cache"
+  lineinfile:
+    dest: /etc/yum.conf
     state: present
-  with_items: "{{ yum_repos }}"
+    regexp: "proxy=.*"
+    insertafter: EOF
+    line: "proxy=http://{{ proxy_host }}:{{ proxy_port }}/"
   when: repository_type == 'cache'
 
 - name: "Repositories - add the SMS local repository to /etc/yum.repos.d"

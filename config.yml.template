@@ -28,6 +28,13 @@ bmc_password:
 # ISO to use for node OS image. Must be on master/headnode at this path!
 iso_path:
 
+# Proxy server
+# If you need to access the internet via a proxy to download packages
+proxy_host:
+proxy_port:
+proxy_username:
+proxy_password:
+
 # Repository settings
 # Valid repository types:
 # - online      download all packages from upstream

@@ -10,13 +10,6 @@
     src: "{{ role_path }}/files/squid.conf.j2"
     dest: /etc/squid/squid.conf
 
-- name: Squid - add cache vhosts to /etc/hosts
-  lineinfile:
-    path: /etc/hosts
-    regexp: '^{{ sms_ip | regex_escape() }} {{ item }}_cache.{{ sms_name }}.{{ domain_name }}'
-    line: '{{ sms_ip }} {{ item }}_cache.{{ sms_name }}.{{ domain_name }}'
-  with_items: "{{ yum_repos }}"
-
 - name: Squid - ensure service is enabled and started
   service:
     name: squid

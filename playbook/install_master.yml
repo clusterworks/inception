@@ -8,6 +8,7 @@
     - validation/selinux
     - validation/ssh
     - validation/network
+    - common/proxy
     - common/firewall
     - common/ntp
     - master/squid
