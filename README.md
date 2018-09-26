@@ -22,6 +22,15 @@ Ansible playbooks for OpenHPC recipies
 - [x] PBS Professional
 - [ ] Slurm
 
+## Proxy support
+
+This playbook supports two kinds of proxies.
+
+Firstly, set `proxy_host` and `proxy_port` in the config file to set an upstream proxy to download assets required from the Internet.
+
+Secondly, set `repository_type == 'cache'` in order to deploy a local Squid proxy on the SMS node in order to cache packages for worker node deployment.
+If you also use a proxy to connect to the internet, set it as above and it will be configured as the upstream peer for the local cache.
+
 ## License
 
 GPLv3
