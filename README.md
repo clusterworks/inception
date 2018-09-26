@@ -28,6 +28,10 @@ To deploy in the cloud, a container can be created from your environment configu
 6. Boot up all the nodes
 7. Run `./run_playbook.sh update_nodes`
 
+### Demonstration
+
+[![](http://img.youtube.com/vi/GZEcDA8pBPY/0.jpg)](http://www.youtube.com/watch?v=GZEcDA8pBPY "Installing OpenHPC using the clusterworks")
+
 ## Software Stack status
 
 - [x] CentOS / RedHat
