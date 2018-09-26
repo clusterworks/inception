@@ -12,7 +12,7 @@ Key features
 - Containerize an environment to share or deploy in the cloud
 - 100% free and open-source software
 
-This repository provides a core Ansible playbook, which can be used to build a cluster environment using a well defined, easy to use and extensible workflow.
+The *inception* repository provides the core Ansible playbook, which is to build a cluster environment and install all the other tools using a well defined, easy to use and extensible workflow.
 
 To deploy on bare metal, just provide an inventory of the physical resources.
 
