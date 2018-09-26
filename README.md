@@ -1,6 +1,22 @@
 # clusterworks
 
-Ansible playbooks for OpenHPC recipies
+clusterworks is a toolkit that brings together the best modern technologies in order to create fast and flexible turn-key HPC environments, deployable on bare-metal infrastructure or in the cloud.
+
+
+Key features
+
+- Built on the amazing work by the [OpenHPC Community](https://openhpc.community/)
+- Easy to use workflows for provisioning and deploying cluster environments
+- Repository, package and configuration management
+- Turn-key, extensible and instilled with best practice
+- Containerize an environment to share or deploy in the cloud
+- 100% free and open-source software
+
+This repository provides a core Ansible playbook, which can be used to build a cluster environment using a well defined, easy to use and extensible workflow.
+
+To deploy on bare metal, just provide an inventory of the physical resources.
+
+To deploy in the cloud, a container can be created from your environment configuration using [Ansible Container](https://docs.ansible.com/ansible-container/).
 
 ## Quick Start
 
