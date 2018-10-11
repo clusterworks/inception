@@ -30,9 +30,8 @@ iso_path:
 
 # Proxy server
 # If you need to access the internet via a proxy to download packages
-proxy_protocol: http
-proxy_host:
-proxy_port:
+# upstream_proxy e.g http://proxy.domain:3128/
+upstream_proxy:
 proxy_username:
 proxy_password:
 
