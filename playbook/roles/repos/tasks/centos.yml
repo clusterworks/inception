@@ -8,6 +8,7 @@
     gpgkey: "{{ yum_repos[item].key }}"
     gpgcheck: "{{ package_signing }}"
     state: present
+    proxy: "{{proxy_protocol}}://{{proxy_host}}:{{ proxy_port }}"
   with_items: "{{ yum_repos }}"
   when: repository_type == 'online' or repository_type == 'cache'
 
