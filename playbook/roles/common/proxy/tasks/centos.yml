@@ -7,5 +7,5 @@
     regexp: "proxy=.*"
     insertafter: EOF
     line: "proxy={{upstream_proxy}}"
-  when: proxy_host != ''
+  when: upstream_proxy != ''
 
