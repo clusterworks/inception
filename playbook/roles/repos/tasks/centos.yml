@@ -8,9 +8,9 @@
     gpgkey: "{{ yum_repos[item].key }}"
     gpgcheck: "{{ package_signing }}"
     state: present
-    proxy: "{{upstream_proxy}}"
+    proxy: "{{proxy_protocol}}://{{proxy_host}}:{{proxy_port}}"
   with_items: "{{ yum_repos }}"
-  when: repository_type == 'online' or repository_type == 'cache' and upstream_proxy != ""
+  when: repository_type == 'online' or repository_type == 'cache' and proxy_host != ""
 
 - name: "Repositories - add online repositories to /etc/yum.repos.d"
   yum_repository:
@@ -21,7 +21,7 @@
     gpgcheck: "{{ package_signing }}"
     state: present
   with_items: "{{ yum_repos }}"
-  when: repository_type == 'online' or repository_type == 'cache' and upstream_proxy == ""
+  when: repository_type == 'online' or repository_type == 'cache' and proxy_host == ""
 
 - name: "Repositories - set the Yum proxy to the local cache"
   lineinfile:

@@ -6,6 +6,6 @@
     state: present
     regexp: "proxy=.*"
     insertafter: EOF
-    line: "proxy={{upstream_proxy}}"
-  when: upstream_proxy != ''
+    line: "proxy={{proxy_protocol}}://{{proxy_host}}:{{proxy_port}}"
+  when: proxy_host != ''
 
